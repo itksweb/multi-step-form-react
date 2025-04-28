@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --Blue-950: hsl(213, 96%, 18%);
+  --Purple-600: hsl(243, 100%, 62%);
+  --Blue-300: hsl(228, 100%, 84%);
+  --Blue-200: hsl(206, 94%, 87%);
+  --Red-500: hsl(354, 84%, 57%);
+
+  --Grey-500: hsl(231, 11%, 63%);
+  --Purple-200: hsl(229, 24%, 87%);
+  --Blue-100: hsl(218, 100%, 97%);
+  --Blue-50: hsl(231, 100%, 99%);
+  --White: hsl(0, 100%, 100%);
+}
+
+
+
+
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  
+}
+#root {
+  width: 100%;
+  margin: 0;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+
