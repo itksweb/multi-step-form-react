@@ -40,7 +40,7 @@ const App = () => {
           {step === 3 && <AddOns setAddons={setAddons} isMonthly={isMonthly} />}
           {step === 4 && <Summary isMonthly={isMonthly}  changePlan={changePlan} />}
         </div>
-        <div className="btns flex justify-between">
+        <div className={`btns flex ${step ===1 ?"justify-end":"justify-between"}`}>
           {step !== 1 && <button className="btn" onClick={prevStep}>Go Back</button>}
           <button className="btn" onClick={nextStep} >{step === 4 ? "Confirm":"Next Step"}t</button>
         </div>
