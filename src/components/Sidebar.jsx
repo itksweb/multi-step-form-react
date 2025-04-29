@@ -8,8 +8,8 @@ const sideData = [
 const Step = ({item, step}) => {
   
   return (
-    <div className="grid grid-cols-5 gap-2 mb-2.5">
-      <div className={`col-span-1 p-2 rounded-full ${step === item[1] ? "bg-[purple] text-white":"bg-[pink]"} flex justify-center items-center size-5`}>
+    <div className="grid grid-cols-5 gap-1 mb-2.5 ">
+      <div className={`col-span-1 p-2 rounded-full ${step === item[1] ? "bg-[purple] text-white":"bg-[pink]"} flex justify-center items-center size-6`}>
         {item[1]}
       </div>
       <div className="col-span-4">
