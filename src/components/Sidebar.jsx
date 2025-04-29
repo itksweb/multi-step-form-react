@@ -9,7 +9,7 @@ const Step = ({item, step}) => {
   
   return (
     <div className="grid grid-cols-5">
-      <div className={`col-span-1 size-4 rounded-full ${step === item[1] ? "bg-[purple]":"bg-[pink]"}`}>
+      <div className={`col-span-1 p-2 rounded-full ${step === item[1] ? "bg-[purple]":"bg-[pink]"}`}>
         {item[1]}
       </div>
       <div className="col-span-4">
