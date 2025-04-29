@@ -8,13 +8,13 @@ const sideData = [
 const Step = ({item, step}) => {
   
   return (
-    <div className="grid grid-cols-5">
-      <div className={`col-span-1 p-2 rounded-full ${step === item[1] ? "bg-[purple]":"bg-[pink]"}`}>
+    <div className="grid grid-cols-5 gap-2">
+      <div className={`col-span-1 p-2 rounded-full ${step === item[1] ? "bg-[purple]":"bg-[pink]"} flex justify-center items-center`}>
         {item[1]}
       </div>
       <div className="col-span-4">
         <div className="">Step {item[1]}</div>
-        <div className="text-3xl">{item[0]}</div>
+        <div className="text-2xl">{item[0]}</div>
       </div>
     </div>
   )
@@ -23,7 +23,6 @@ const Step = ({item, step}) => {
 const Sidebar = ({step}) => {
   return (
     <div className={`col-span-1 min-w-80 h-full bg-no-repeat bg-contain p-4 bg-[url(${bgSidebar})]`}>
-      <div>Step {step}</div>
       <div>
         {sideData.map((item, i) => <Step item ={[item, i+1]} step ={step} />)}
       </div>
