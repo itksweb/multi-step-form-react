@@ -41,8 +41,8 @@ const App = () => {
           {step === 4 && <Summary isMonthly={isMonthly}  changePlan={changePlan} />}
         </div>
         <div className="btns flex justify-between">
-          <button className="btn" onClick={prevStep}>Back</button>
-          <button className="btn" onClick={nextStep} >Next</button>
+          {step !== 1 && <button className="btn" onClick={prevStep}>Go Back</button>}
+          <button className="btn" onClick={nextStep} >{step === 4 ? "Confirm":"Next Step"}t</button>
         </div>
       </main>
     </div>
