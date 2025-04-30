@@ -1,15 +1,16 @@
-import bgSidebar from "../images/bg-sidebar-desktop.svg"
-import mobiBgSidebar from "../images/bg-sidebar-mobile.svg"
+import bgSidebar from "../images/bg-sidebar-desktop.svg";
+import mobiBgSidebar from "../images/bg-sidebar-mobile.svg";
 
-const sideData = [
-  "Your info", "Select plan", "Add-ons", "Summary"
-]
+const sideData = ["Your info", "Select plan", "Add-ons", "Summary"];
 
-const Step = ({item, step}) => {
-  
+const Step = ({ item, step }) => {
   return (
     <div className="grid grid-cols-5 gap-1 mb-2.5 ">
-      <div className={`col-span-1 p-2 rounded-full ${step === item[1] ? "bg-[purple] text-white":"bg-[pink]"} flex justify-center items-center size-6`}>
+      <div
+        className={`col-span-1 p-2 rounded-full ${
+          step === item[1] ? "bg-[purple] text-white" : "bg-[pink]"
+        } flex justify-center items-center size-6`}
+      >
         {item[1]}
       </div>
       <div className="col-span-4">
@@ -17,17 +18,21 @@ const Step = ({item, step}) => {
         <div className="text-2xl">{item[0]}</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-const Sidebar = ({step}) => {
+const Sidebar = ({ step }) => {
   return (
-    <div className={`col-span-1 min-w-80 h-full bg-no-repeat bg-contain p-4 bg-[url(${bgSidebar})]`}>
+    <div
+      className={`col-span-1 min-w-80 h-full bg-no-repeat bg-contain p-4 bg-[url(/assets/images/bg-sidebar-desktop.svg)]`}
+    >
       <div>
-        {sideData.map((item, i) => <Step item ={[item, i+1]} step ={step} />)}
+        {sideData.map((item, i) => (
+          <Step key={item} item={[item.toUpperCase(), i + 1]} step={step} />
+        ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
 @import "tailwindcss";
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Ubuntu", sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
@@ -23,16 +25,11 @@
   --White: hsl(0, 100%, 100%);
 }
 
-
-
-
-
 body {
   margin: 0;
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  
 }
 #root {
   width: 100%;
@@ -43,8 +40,10 @@ body {
   align-items: center;
 }
 
+input {
+  color: var(--color-Blue-950);
+}
 
-
-
-
-
+/* ::placeholder {
+  color: green;
+} */
