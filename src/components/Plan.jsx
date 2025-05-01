@@ -9,7 +9,7 @@ const plans = [
 
 const Plan = ({ isMonthly, setIsMonthly }) => {
   return (
-    <div>
+    <div className="bg-white rounded-xl p-4">
       <ContentHead
         title="Select your plan"
         descr="You have the option of monthly or yearly billing."
@@ -19,7 +19,7 @@ const Plan = ({ isMonthly, setIsMonthly }) => {
           <Plancard key={item[0]} item={item} isMonthly={isMonthly} />
         ))}
       </div>
-      <div className="month-switch flex justify-center items-center p-3 my-3 bg-[var(--Blue-300)]">
+      <div className="month-switch flex justify-center items-center p-3 my-3 bg-[var(--Blue-50)]">
         <div
           className={` w-10 cursor-pointer bg-[var(--Blue-950)] rounded-full h-5 flex items-center p-[2px] ${
             !isMonthly ? "justify-end" : "justify-start"

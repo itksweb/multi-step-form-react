@@ -5,7 +5,7 @@ const sideData = ["Your info", "Select plan", "Add-ons", "Summary"];
 
 const Step = ({ item, step }) => {
   return (
-    <div className="grid grid-cols-5 gap-1 mb-2.5 ">
+    <div className="grid grid-cols-1 sm:grid-cols-5 sm:gap-1 sm:mb-2.5 ">
       <div
         className={`col-span-1 p-2 rounded-full ${
           step === item[1] ? "bg-[purple] text-white" : "bg-[pink]"
@@ -13,9 +13,9 @@ const Step = ({ item, step }) => {
       >
         {item[1]}
       </div>
-      <div className="col-span-4">
+      <div className="hidden sm:block sm:col-span-4">
         <div className="">Step {item[1]}</div>
-        <div className="text-2xl">{item[0]}</div>
+        <div className="text-[0.9em] font-medium">{item[0]}</div>
       </div>
     </div>
   );
@@ -24,9 +24,9 @@ const Step = ({ item, step }) => {
 const Sidebar = ({ step }) => {
   return (
     <div
-      className={`col-span-1 min-w-80 h-full bg-no-repeat bg-contain p-4 bg-[url(/assets/images/bg-sidebar-desktop.svg)]`}
+      className={` w-full min-h-full text-[var(--White)] bg-no-repeat bg-cover p-4 bg-[url(/assets/images/bg-sidebar-mobile.svg)] sm:w-1/3 sm:bg-[url(/assets/images/bg-sidebar-desktop.svg)]`}
     >
-      <div>
+      <div className="grid grid-cols-4 sm:block">
         {sideData.map((item, i) => (
           <Step key={item} item={[item.toUpperCase(), i + 1]} step={step} />
         ))}

@@ -30,9 +30,9 @@ const App = () => {
   };
 
   return (
-    <div className="grid grid-flow-col grid-cols-3 text-black bg-white p-4 gap-8 max-w-[80%] min-h-[80vh] rounded-2xl ">
+    <div className="flex p-0 flex-col sm:flex-row text-gray-700 sm:bg-white sm:p-4 sm:gap-8  sm:min-h-[80vh] sm:rounded-xl ">
       <Sidebar step={step} />
-      <main className="col-span-2 rounded-2xl p-4 flex flex-col justify-between">
+      <main className=" rounded-2xl p-4 flex flex-col justify-between">
         <div className={`${step === 1 ? "h-full" : ""}`}>
           {step === 1 && (
             <PersonalInfo
