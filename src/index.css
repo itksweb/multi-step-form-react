@@ -2,6 +2,11 @@
 
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-xxs: 15rem;
+  --breakpoint-xs: 30rem;
+}
+
 :root {
   font-family: "Ubuntu", sans-serif;
   line-height: 1.5;

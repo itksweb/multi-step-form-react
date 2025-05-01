@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ContentHead from "./ContentHead";
 
 const formin = [
   ["Name", "e.g. Stephen King", "text", "name"],
@@ -28,13 +29,10 @@ const PersonalInfo = ({ userInfo, setUserInfo, nextStep }) => {
 
   return (
     <div>
-      <h1 className="text-[var(--Blue-950)] text-2xl font-bold">
-        Personal info
-      </h1>
-      <p className="">
-        Please provide your name, email address, and phone number.
-      </p>
-
+      <ContentHead
+        title="Personal info"
+        descr="Please provide your name, email address, and phone number."
+      />
       <form className="flex flex-col justify-between" onSubmit={handleSubmit}>
         <div className="fields">
           <div className="mb-5">

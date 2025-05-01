@@ -30,10 +30,10 @@ const App = () => {
   };
 
   return (
-    <div className="flex p-0 flex-col sm:flex-row text-gray-700 sm:bg-white sm:p-4 sm:gap-8  sm:min-h-[80vh] sm:rounded-xl ">
+    <div className="flex flex-col min-h-[100vh] sm:flex-row text-gray-700 sm:bg-white sm:p-5 sm:min-h-[80vh] sm:rounded-xl ">
       <Sidebar step={step} />
-      <main className=" rounded-2xl p-4 flex flex-col justify-between">
-        <div className={`${step === 1 ? "h-full" : ""}`}>
+      <main className=" p-0 rounded-2xl h-full md:min-w-[540px] min-h-[75vh] sm:p-4 flex flex-col px-6 justify-between">
+        <div className=" -mt-18 sm:mt-0 bg-white rounded-xl px-6 py-3 w-full">
           {step === 1 && (
             <PersonalInfo
               setUserInfo={setUserInfo}
@@ -53,26 +53,31 @@ const App = () => {
             <Summary isMonthly={isMonthly} changePlan={changePlan} />
           )}
         </div>
-        {step !== 1 && (
-          <div
-            className={`btns flex ${
-              step === 1 ? "justify-end" : "justify-between"
-            }`}
-          >
-            {step !== 1 && (
-              <button className="btn" onClick={prevStep} type="button">
-                Go Back
-              </button>
-            )}
+        {/* control buttons  */}
+        <div
+          className={` p-4 bg-[var(--White)] px-12 flex ${
+            step === 1 ? "justify-end" : "justify-between"
+          }`}
+        >
+          {step !== 1 && (
             <button
-              className="btn"
-              onClick={step !== 1 ? nextStep : () => {}}
-              type={step === 1 ? "submit" : "button"}
+              className="btn text-[0.8em] sm:text-[1em] text-[var(--Grey-500)]"
+              onClick={prevStep}
+              type="button"
             >
-              {step === 4 ? "Confirm" : "Next Step"}t
+              Go Back
             </button>
-          </div>
-        )}
+          )}
+          <button
+            className={`${
+              step === 4 ? "bg-[var(--Purple-600)]" : "bg-[var(--Blue-950)]"
+            } px-5 py-2 text-[var(--White)] rounded-lg text-[0.8em] sm:text-[1em] `}
+            onClick={step !== 1 ? nextStep : () => {}}
+            type={step === 1 ? "submit" : "button"}
+          >
+            {step === 4 ? "Confirm" : "Next Step"}t
+          </button>
+        </div>
       </main>
     </div>
   );
