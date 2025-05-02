@@ -1,4 +1,4 @@
-// import arcade from ""
+
 
 const Plancard = ({ item, isMonthly, setPlan, plan }) => {
   const amount = isMonthly ? item[1] : item[1] * 10;
