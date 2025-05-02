@@ -7,7 +7,7 @@ const plans = [
   ["pro", 15, "/assets/images/icon-pro.svg"],
 ];
 
-const Plan = ({ isMonthly, setIsMonthly }) => {
+const Plan = ({ isMonthly, setIsMonthly, plan, setPlan }) => {
   return (
     <div className=" ">
       <ContentHead
@@ -16,7 +16,7 @@ const Plan = ({ isMonthly, setIsMonthly }) => {
       />
       <div className="plans grid gap-2.5 sm:grid-flow-col sm:grid-cols-3 sm:gap-5 w-full">
         {plans.map((item) => (
-          <Plancard key={item[0]} item={item} isMonthly={isMonthly} />
+          <Plancard key={item[0]} item={item} isMonthly={isMonthly} setPlan={setPlan} plan={plan} />
         ))}
       </div>
       <div className="rounded-lg sm:rounded-xl month-switch flex justify-center items-center p-2.5 sm:p-3 my-5 sm:my-7 bg-[var(--Blue-50)] w-full">

@@ -1,10 +1,18 @@
 // import arcade from ""
 
-const Plancard = ({ item, isMonthly, setPlan }) => {
+const Plancard = ({ item, isMonthly, setPlan, plan }) => {
   const amount = isMonthly ? item[1] : item[1] * 10;
   const term = isMonthly ? "mo" : "yr";
   return (
-    <div className=" flex  sm:min-w-[100px] items-start sm:flex-col sm:justify-between border rounded-lg sm:rounded-2xl border-[var(--Blue-200)] sm:p-4 p-2.5">
+    <div
+      id={item[0]}
+      className={`flex  sm:min-w-[100px] items-start sm:flex-col sm:justify-between border rounded-lg sm:rounded-2xl ${
+        plan.name === item[0]
+          ? "border-[var(--Purple-600)] border-2 bg-[]"
+          : "border-[var(--Blue-200)] border"
+      })] sm:p-4 p-2.5`}
+      onClick={(e) => setPlan({ name: item[0], amount })}
+    >
       <img
         src={item[2]}
         alt={`${item[0]} plan`}
