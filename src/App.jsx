@@ -36,7 +36,7 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-[100vh] sm:flex-row text-gray-700 sm:bg-[var(--White)] sm:py-5 sm:px-8 sm:min-h-[80vh] sm:rounded-xl ">
+    <div className="flex flex-col min-h-[100vh] max-sm:max-h-[100vh] sm:flex-row text-gray-700 sm:bg-[var(--White)] sm:py-5 sm:px-8 sm:min-h-[80vh] sm:rounded-xl ">
       <Sidebar step={step} />
       <main className="px-4 rounded-2xl h-full md:min-w-[540px] min-h-[75vh] sm:p-4 flex flex-col justify-between">
         <div className=" -mt-18 sm:mt-0 bg-white rounded-xl px-5 py-4 w-full">
