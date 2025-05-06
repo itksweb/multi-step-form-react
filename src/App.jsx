@@ -63,7 +63,12 @@ const App = () => {
             />
           )}
           {step === 4 && (
-            <Summary isMonthly={isMonthly} changePlan={changePlan} />
+            <Summary
+              isMonthly={isMonthly}
+              plan={plan}
+              addons={addons}
+              changePlan={changePlan}
+            />
           )}
         </div>
         {/* control buttons  */}
