@@ -2,13 +2,26 @@ import ContentHead from "./ContentHead";
 
 const Summary = ({ isMonthly, addons, plan, changePlan }) => {
   const term = isMonthly ? "mo" : "yr";
-  const Addn = ({ item }) => {
-    
+  const addns = () => {
+    if (addons.length) {
+      return (
+        <div className="summary-addons ">
+          {addons.map((item) => (
+            <div className="flex items-center justify-between" key={item.name}>
+              <div className="addon-name">{item.name}</div>
+              <div className="addon-amount">
+                +${item.amount}/{term}
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    }
     return (
-      <div className="flex items-center justify-between">
-        <div className="addon-name">{item.name}</div>
-        <div className="addon-amount">
-          +${item.amount}/{term}
+      <div className="summary-addons ">
+        <div className="flex items-center justify-between" key={item.name}>
+          <div className="addon-name">sample addon name</div>
+          <div className="addon-amount">+$0/{term}</div>
         </div>
       </div>
     );
@@ -20,31 +33,57 @@ const Summary = ({ isMonthly, addons, plan, changePlan }) => {
         title="Finishing up"
         descr="Double-check everything looks OK before confirming."
       />
-      {plan.name && (
-        <div className="flex items-center justify-between">
-          <div className="plan">
+      <div className="p-4 bg-gray-100 rounded-lg ">
+        <div className="plan flex items-center justify-between my-2">
+          <div className="plan-left">
             <span className="plan-name block text-[var(--Blue-950)] text= font-semibold">
-              {`${plan.name}(${isMonthly ? "Monthly" : "Yearly"})`}
+              {`${plan.name ? plan.name : "No plan selected"}(${
+                isMonthly ? "Monthly" : "Yearly"
+              })`}
             </span>
-            <span className="change-plan block">change plan</span>
+            <span className="change-plan block text-[var(--Grey-500)] text-[0.9em]">
+              change plan
+            </span>
           </div>
-          <div className="plan-amount text-[var(--Blue-950)] text= font-semibold">
-            ${plan.amount}/{term}
+          <div className="plan-right text-[var(--Blue-950)] text= font-semibold">
+            ${plan.name ? plan.amount : "0.00"}/{term}
           </div>
         </div>
-      )}
-      {addons[0].name && (
-        <div className="summary-addons ">
-          {addons.map((item) => (
-            <div className="flex items-center justify-between" key={item.name}>
-              <div className="addon-name">{item.name}</div>
-              <div className="addon-amount">
-                +${item.amount}/{term}
+        <hr className="my-2" />
+        {addons.length ? (
+          <div className="summary-addons mt-3 ">
+            {addons.map((item) => (
+              <div
+                className="flex items-center justify-between mb-2"
+                key={item.name}
+              >
+                <div className="addon-name text-[0.9em] text-[var(--Grey-500)]">
+                  {item.name}
+                </div>
+                <div className="addon-amount text-[0.9em] text-[var(--Blue-950)]">
+                  +${item.amount}/{term}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </div>
+        ) : (
+          <div className="summary-addons my-2 ">
+            {["one", "two"].map((item) => (
+              <div
+                className="flex items-center justify-between mb-2"
+                key={item}
+              >
+                <div className="addon-name text-[0.9em] text-[var(--Grey-500)]">
+                  sample addon {item}{" "}
+                </div>
+                <div className="addon-amount text-[0.9em] text-[var(--Blue-950)]">
+                  +$0/{term}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
