@@ -5,7 +5,7 @@ import Plancard from "./Plancard";
 const plans = [
   ["Arcade", 9, "/assets/images/icon-arcade.svg"],
   ["Advanced", 12, "/assets/images/icon-advanced.svg"],
-  ["pro", 15, "/assets/images/icon-pro.svg"],
+  ["Pro", 15, "/assets/images/icon-pro.svg"],
 ];
 
 const Plan = ({ isMonthly, setIsMonthly, plan, setPlan, err, errTxt, setInputErr }) => {

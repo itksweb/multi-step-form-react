@@ -46,6 +46,7 @@ const AddOnCard = ({ setAddons, isMonthly, addons, item }) => {
           id={item[0]}
           className="size-5 "
           checked={hasObject}
+          onChange={()=>{}}
         />
         <div className="ml-3">
           <p className="name text-[var(--Blue-950)] font-medium">{item[0]}</p>
