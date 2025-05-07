@@ -1,11 +1,20 @@
-import { useEffect } from "react";
+import { useEffect useState } from "react";
 import ContentHead from "./ContentHead";
 
 const Summary = ({ isMonthly, addons, plan, changePlan }) => {
+const [total, setTotal] = useState(0); 
   const term = isMonthly ? "mo" : "yr";
   const hasObject = addons.some((obje) => obje.name === item[0]);
-  let total= 0;
-  useEffect()
+useEffect(() =>{
+	if(plan.amount) setTotal(prev => prev + plan.amount) 
+
+if(addons.length){
+for(let x of addons) {
+	setTotal(prev => prev + x.amount) 
+} 
+}
+}, [addons,plans] ) 
+  
 
   return (
     <div className=" ">
