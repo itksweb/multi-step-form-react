@@ -1,31 +1,11 @@
+import { useEffect } from "react";
 import ContentHead from "./ContentHead";
 
 const Summary = ({ isMonthly, addons, plan, changePlan }) => {
   const term = isMonthly ? "mo" : "yr";
-  const addns = () => {
-    if (addons.length) {
-      return (
-        <div className="summary-addons ">
-          {addons.map((item) => (
-            <div className="flex items-center justify-between" key={item.name}>
-              <div className="addon-name">{item.name}</div>
-              <div className="addon-amount">
-                +${item.amount}/{term}
-              </div>
-            </div>
-          ))}
-        </div>
-      );
-    }
-    return (
-      <div className="summary-addons ">
-        <div className="flex items-center justify-between" key={item.name}>
-          <div className="addon-name">sample addon name</div>
-          <div className="addon-amount">+$0/{term}</div>
-        </div>
-      </div>
-    );
-  };
+  const hasObject = addons.some((obje) => obje.name === item[0]);
+  let total= 0;
+  useEffect()
 
   return (
     <div className=" ">
@@ -41,9 +21,14 @@ const Summary = ({ isMonthly, addons, plan, changePlan }) => {
                 isMonthly ? "Monthly" : "Yearly"
               })`}
             </span>
-            <span className="change-plan block text-[var(--Grey-500)] text-[0.9em]">
-              change plan
-            </span>
+            <button
+              type="button change-plan block"
+              onClick={() => changePlan()}
+            >
+              <span className="change-plan text-sm cursor-pointer hover:underline ">
+                change
+              </span>
+            </button>
           </div>
           <div className="plan-right text-[var(--Blue-950)] text= font-semibold">
             ${plan.name ? plan.amount : "0.00"}/{term}
@@ -83,6 +68,16 @@ const Summary = ({ isMonthly, addons, plan, changePlan }) => {
             ))}
           </div>
         )}
+      </div>
+      <div className="">
+        <div className="flex items-center justify-between mb-2" key={item}>
+          <span className="total-label text-[0.9em] text-[var(--Grey-500)]">
+            Total per {isMonthly ?"month":"year"}
+          </span>
+          <span className="total-amount text-[0.9em] text-[var(--Blue-950)]">
+            +$0/{term}
+          </span>
+        </div>
       </div>
     </div>
   );

@@ -5,31 +5,53 @@ import Plan from "./components/Plan";
 import AddOns from "./components/AddOns";
 import Summary from "./components/Summary";
 
+let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 const App = () => {
   const [userInfo, setUserInfo] = useState({ name: "", phone: "", email: "" });
   const [plan, setPlan] = useState({ name: "", amount: 0 });
   const [addons, setAddons] = useState([]);
+  const [inputErr, setInputErr] = useState({ name: false, phone: false, email: false, plan:false });
   const [isMonthly, setIsMonthly] = useState(false);
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(1);
 
-  const changePlan = () => {};
+  const changePlan = () => setStep(2);
 
-  useEffect(() => console.log(userInfo), [userInfo]);
-
-  const nextStep = (e) => {
-    if (step === 1 && userInfo.name && userInfo.phone && userInfo.email) {
-      return setStep((prev) => prev + 1);
+  const nextStep = () => {
+    if (step === 1 ) {
+      if (userInfo.name && userInfo.phone && userInfo.email) {
+        return setStep((prev) => prev + 1);
+      }
+      if (!userInfo.name) {
+        return setInputErr((prev) => {
+          return { ...prev, name: true };
+        });
+      }
+      if (!userInfo.email || !emailRegex.test(userInfo.email)) {
+        return setInputErr((prev) => {
+          return { ...prev, email: true };
+        });
+      } if (!userInfo.phone) {
+        return setInputErr((prev) => {
+          return { ...prev, phone: true };
+        });
+      }
+      
     }
-    if (step === 2 && plan.name) {
-      return setStep((prev) => prev + 1);
+    if (step === 2 ) {
+      if (plan.name) {
+        return setStep((prev) => prev + 1);
+      }
+      return setInputErr((prev) => {
+        return { ...prev, plan: true };
+      });
     }
-    if (step < 4 && step > 2) {
-      setStep((prev) => prev + 1);
+    if (step === 3) {
+      return setStep((prev) => prev + 1);
     }
   };
 
-  const prevStep = (e) => {
-    e.preventDefault();
+  const prevStep = () => {
     if (step > 1) {
       setStep((prev) => prev - 1);
     }
@@ -45,6 +67,8 @@ const App = () => {
               setUserInfo={setUserInfo}
               nextStep={nextStep}
               userInfo={userInfo}
+              inputErr={inputErr}
+              setInputErr={setInputErr}
             />
           )}
           {step === 2 && (
@@ -53,6 +77,8 @@ const App = () => {
               isMonthly={isMonthly}
               setIsMonthly={setIsMonthly}
               plan={plan}
+              err={inputErr.plan}
+              setInputErr={setInputErr}
             />
           )}
           {step === 3 && (
@@ -79,7 +105,7 @@ const App = () => {
         >
           {step !== 1 && (
             <button
-              className="btn text-[0.8em] sm:text-[1em] text-[var(--Grey-500)]"
+              className="btn text-[0.8em] hover:text-[var(--Blue-950)] focus:text-[var(--Blue-950)] cursor-pointer sm:text-[1em] text-[var(--Grey-500)]"
               onClick={prevStep}
               type="button"
             >
@@ -89,11 +115,11 @@ const App = () => {
           <button
             className={`${
               step === 4 ? "bg-[var(--Purple-600)]" : "bg-[var(--Blue-950)]"
-            } px-5 py-2 text-[var(--White)] rounded-lg text-[0.8em] sm:text-[1em] `}
+            } px-5 py-2 text-[var(--White)] cursor-pointer rounded-lg text-[0.8em] sm:text-[1em] `}
             onClick={nextStep}
             type={step === 1 ? "submit" : "button"}
           >
-            {step === 4 ? "Confirm" : "Next Step"}t
+            {step === 4 ? "Confirm" : "Next Step"}
           </button>
         </div>
       </main>

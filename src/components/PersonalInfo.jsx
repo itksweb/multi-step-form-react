@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ContentHead from "./ContentHead";
+import TextInput from "./TextInput";
 
 const formin = [
   ["Name", "e.g. Stephen King", "text", "name"],
@@ -9,8 +10,12 @@ const formin = [
 
 let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-const PersonalInfo = ({ userInfo, setUserInfo, nextStep }) => {
-  const [err, setErr] = useState({ name: false, email: false, phone: false });
+const PersonalInfo = ({
+  userInfo,
+  setUserInfo,
+  inputErr,
+  setInputErr,
+}) => {
   const [touched, setTouched] = useState({
     name: false,
     email: false,
@@ -22,72 +27,70 @@ const PersonalInfo = ({ userInfo, setUserInfo, nextStep }) => {
 
   useEffect(() => {
     if (touched.name) {
-      if (name.trim() && err.name) {
-        setErr((prev) => {
+      if (userInfo.name.trim() && inputErr.name) {
+        setInputErr((prev) => {
           return { ...prev, name: false };
         });
-      } else if (!name.trim() && !err.name) {
-        setErr((prev) => {
+      } else if (!userInfo.name.trim() && !inputErr.name) {
+        setInputErr((prev) => {
           return { ...prev, name: true };
         });
       }
     }
-  }, [name, touched]);
+  }, [userInfo.name]);
 
   useEffect(() => {
     if (touched.email) {
-      if (emailRegex.test(email) && err.email) {
-        setErr((prev) => {
+      if (emailRegex.test(userInfo.email) && inputErr.email) {
+        setInputErr((prev) => {
           return { ...prev, email: false };
         });
-      } else if (!emailRegex.test(email) && !err.email) {
-        setErr((prev) => {
+      } else if (!emailRegex.test(userInfo.email) && !inputErr.email) {
+        setInputErr((prev) => {
           return { ...prev, email: true };
         });
       }
     }
-  }, [email, touched]);
+  }, [userInfo.email]);
 
   useEffect(() => {
     if (touched.phone) {
-      if (phone.trim() && err.phone) {
-        setErr((prev) => {
+      if (userInfo.phone.trim() && inputErr.phone) {
+        setInputErr((prev) => {
           return { ...prev, phone: false };
         });
-      } else if (!phone.trim() && !err.phone) {
-        setErr((prev) => {
+      } else if (!userInfo.phone.trim() && !inputErr.phone) {
+        setInputErr((prev) => {
           return { ...prev, phone: true };
         });
       }
     }
-  }, [phone, touched]);
-  useEffect(() => {
-    if (name && phone && emailRegex.test(email)) {
-      setUserInfo({ name, phone, email });
-    }
-  }, [name, email, phone]);
+  }, [userInfo.phone]);
 
-  const onInputChange = (e) => {
-    const { id, value } = e.target;
+
+  const onInputChange = (id, value) => {
     if (!touched[id]) {
       setTouched((prev) => {
         return { ...prev, [id]: true };
       });
     }
-    switch (id) {
-      case "name":
-        setName(value);
-        break;
-      case "email":
-        setEmail(value);
-        break;
-      case "phone":
-        setPhone(value);
-        break;
+    setUserInfo((prev) => {
+      return { ...prev, [id]: value };
+    });
+    // switch (id) {
+    //   case "name":
+    //     setName(value);
+    //     break;
+    //   case "email":
+    //     setEmail(value);
+    //     break;
+    //   case "phone":
+    //     setPhone(value);
+    //     break;
 
-      default:
-        break;
-    }
+    //   default:
+    //     break;
+    // }
   };
 
   return (
@@ -96,78 +99,36 @@ const PersonalInfo = ({ userInfo, setUserInfo, nextStep }) => {
         title="Personal info"
         descr="Please provide your name, email address, and phone number."
       />
+
       <div className="fields">
-        <div className="mb-5">
-          <label
-            htmlFor="name"
-            className="block mb-2 text-sm text-[var(--Blue-500)] "
-          >
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            className="border border-gray-300 font-medium text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-            placeholder="e.g. Stephen King"
-            required
-            value={name}
-            onChange={onInputChange}
-          />
-          {err.name && (
-            <p className="mt-2 text-sm text-[var(--Red-500)] ">
-              <span className="font-medium">Oops!</span> ENTER YOUR NAME PLEASE
-            </p>
-          )}
-        </div>
-        <div className="mb-5">
-          <label
-            htmlFor="email"
-            className="block mb-2 text-sm text-[var(--Blue-950)] "
-          >
-            Email Address
-          </label>
-          <input
-            type="email"
-            id="email"
-            className={`border ${
-              email && !emailRegex.test(email)
-                ? "border-[var(--Red-500)]"
-                : "border-gray-300"
-            } text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5`}
-            placeholder="e.g. stephenking@lorem.com"
-            required
-            value={email}
-            onChange={onInputChange}
-          />
-          {err.email && (
-            <p className="mt-2 text-sm text-[var(--Red-500)] ">
-              <span className="font-medium">Oops!</span> INCORECT EMAIL
-            </p>
-          )}
-        </div>
-        <div className="mb-5">
-          <label
-            htmlFor="phone"
-            className="block mb-2 text-sm text-[var(--Blue-950)]  "
-          >
-            Phone Number
-          </label>
-          <input
-            type="number"
-            id="phone"
-            className="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-            placeholder="e.g. +1 234 567 890"
-            required
-            value={phone}
-            onChange={onInputChange}
-          />
-          {err.phone && (
-            <p className="mt-2 text-sm text-[var(--Red-500)] ">
-              <span className="font-medium">Oops!</span> ENTER YOUR PHONE NUMBER
-              PLEASE
-            </p>
-          )}
-        </div>
+        <TextInput
+          type="text"
+          id="name"
+          placeholder="e.g. Stephen King"
+          value={userInfo.name}
+          onChange={onInputChange}
+          label="Name"
+          err={inputErr.name}
+        />
+        <TextInput
+          type="email"
+          id="email"
+          placeholder="e.g. stephenking@lorem.com"
+          value={userInfo.email}
+          onChange={onInputChange}
+          label="Email Address"
+          err={inputErr.email}
+          errTxt="Please enter a valid email"
+        />
+        <TextInput
+          type="number"
+          id="phone"
+          placeholder="e.g. +1 234 567 890"
+          value={userInfo.phone}
+          onChange={onInputChange}
+          label="Phone Number"
+          err={inputErr.phone}
+        />
       </div>
     </div>
   );

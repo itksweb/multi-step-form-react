@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import ContentHead from "./ContentHead";
 import Plancard from "./Plancard";
 
@@ -7,7 +8,15 @@ const plans = [
   ["pro", 15, "/assets/images/icon-pro.svg"],
 ];
 
-const Plan = ({ isMonthly, setIsMonthly, plan, setPlan }) => {
+const Plan = ({ isMonthly, setIsMonthly, plan, setPlan, err, errTxt, setInputErr }) => {
+  
+  useEffect(()=>{
+    if (plan.name) {
+      setInputErr((prev) => {
+        return { ...prev, plan: false };
+      });
+    }
+  },[plan])
   return (
     <div className=" ">
       <ContentHead
@@ -16,7 +25,13 @@ const Plan = ({ isMonthly, setIsMonthly, plan, setPlan }) => {
       />
       <div className="plans grid gap-2.5 sm:grid-flow-col sm:grid-cols-3 sm:gap-5 w-full">
         {plans.map((item) => (
-          <Plancard key={item[0]} item={item} isMonthly={isMonthly} setPlan={setPlan} plan={plan} />
+          <Plancard
+            key={item[0]}
+            item={item}
+            isMonthly={isMonthly}
+            setPlan={setPlan}
+            plan={plan}
+          />
         ))}
       </div>
       <div className="rounded-lg sm:rounded-xl month-switch flex justify-center items-center p-2.5 sm:p-3 my-5 sm:my-7 bg-[var(--Blue-50)] w-full">
@@ -43,6 +58,9 @@ const Plan = ({ isMonthly, setIsMonthly, plan, setPlan }) => {
           Yearly
         </div>
       </div>
+      <p className={`${err ? "text-sm text-[var(--Red-500)] text-center " : "hidden"} `}>
+        {`${errTxt ? errTxt : "Please select a plan to proceed"}`}
+      </p>
     </div>
   );
 };

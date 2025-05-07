@@ -1,12 +1,22 @@
+import { useEffect } from "react";
 
 
 const Plancard = ({ item, isMonthly, setPlan, plan }) => {
   const amount = isMonthly ? item[1] : item[1] * 10;
   const term = isMonthly ? "mo" : "yr";
+
+  useEffect(()=>{
+    if (plan.name && plan.name === item[0]) {
+      setPlan((prev) => {
+        return { ...prev, amount: isMonthly ? item[1] : item[1] * 10 };
+      });
+    }
+  },[isMonthly])
+
   return (
     <div
       id={item[0]}
-      className={`flex  sm:min-w-[100px] items-start sm:flex-col sm:justify-between border rounded-lg sm:rounded-2xl ${
+      className={`flex  sm:min-w-[100px] items-start cursor-pointer sm:flex-col sm:justify-between border rounded-lg sm:rounded-2xl ${
         plan.name === item[0]
           ? "border-[var(--Purple-600)] border-2 bg-[]"
           : "border-[var(--Blue-200)] border"
