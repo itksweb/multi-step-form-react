@@ -28,7 +28,7 @@ const Plancard = ({ item, isMonthly, setPlan, plan }) => {
         alt={`${item[0]} plan`}
         className="size-9 sm:size-11"
       />
-      <div className="txt ml-3 sm:mt-14 sm:ml-0 ">
+      <div className="txt ml-3 sm:mt-11 sm:ml-0 ">
         <p className="name text-[var(--Blue-950)] font-medium">{item[0]}</p>
         <p className="amount text-[0.8em] text-[var(--Grey-500)] ">{`$${amount}/${term}`}</p>
         {!isMonthly && (

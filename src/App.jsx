@@ -13,7 +13,7 @@ const App = () => {
   const [plan, setPlan] = useState({ name: "", amount: 0 });
   const [isMonthly, setIsMonthly] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [addons, setAddons] = useState([]);
   const [inputErr, setInputErr] = useState({
     name: false,
@@ -70,11 +70,11 @@ const App = () => {
   };
 
   return (
-    <div className="flex max-sm:flex-col max-sm:min-h-[100vh] max-sm:max-h-[100vh] text-gray-700 sm:bg-[var(--White)] sm:p-4 sm:min-h-[80vh] sm:rounded-xl ">
+    <div className="flex flex-col max-h-[100vh] text-gray-700 sm:flex-row sm:bg-[var(--White)] sm:p-4 sm:max-h-[90vh] sm:rounded-xl sm:justify-between md:min-w-[760px]  ">
       <Sidebar step={step} />
       <main className="max-sm:px-4 rounded-2xl h-full max-sm:min-h-[75vh] sm:p-4 flex flex-col justify-between">
         {!confirmed && (
-          <div className=" max-sm:-mt-18 bg-white max-sm:p-4 rounded-xl flex justify-center py-4 w-full">
+          <div className=" max-sm:-mt-18 bg-white max-sm:p-4 rounded-xl flex justify-center items-center py-4 w-full">
             {step === 1 && (
               <PersonalInfo
                 setUserInfo={setUserInfo}
@@ -114,7 +114,7 @@ const App = () => {
         {/* control buttons  */}
         {!confirmed && (
           <div
-            className={` p-4 bg-[var(--White)]  flex -mx-4 sm:-mx-0 sm:px-8 ${
+            className={` p-4 max-sm:bg-[var(--White)]  flex -mx-4 sm:-mx-0 sm:px-8 ${
               step === 1 ? "justify-end" : "justify-between"
             }`}
           >

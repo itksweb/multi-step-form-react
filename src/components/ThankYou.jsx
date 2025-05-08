@@ -1,3 +1,5 @@
+import Try from "./Try";
+
 const ThankYou = () => {
   return (
     <div className="-mt-18 sm:mt-0 bg-white rounded-xl py-8 w-full">
@@ -13,6 +15,7 @@ const ThankYou = () => {
           our platform. If you ever need support, please feel free to email us
           at support@loremgaming.com.
         </p>
+        <Try />
       </div>
     </div>
   );
