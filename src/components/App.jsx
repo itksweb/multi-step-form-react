@@ -11,9 +11,6 @@ let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const App = () => {
   const [userInfo, setUserInfo] = useState({ name: "", phone: "", email: "" });
   const [plan, setPlan] = useState({ name: "", amount: 0 });
-  const [isMonthly, setIsMonthly] = useState(false);
-  const [confirmed, setConfirmed] = useState(false);
-  const [step, setStep] = useState(1);
   const [addons, setAddons] = useState([]);
   const [inputErr, setInputErr] = useState({
     name: false,
@@ -21,7 +18,10 @@ const App = () => {
     email: false,
     plan: false,
   });
-  
+  const [isMonthly, setIsMonthly] = useState(false);
+  const [confirmed, setConfirmed] = useState(false);
+  const [step, setStep] = useState(1);
+
   const changePlan = () => setStep(2);
 
   const nextStep = () => {
@@ -70,11 +70,11 @@ const App = () => {
   };
 
   return (
-    <div className="flex max-sm:flex-col max-sm:min-h-[100vh] max-sm:max-h-[100vh] text-gray-700 sm:bg-[var(--White)] sm:p-4 sm:min-h-[80vh] sm:rounded-xl ">
+    <div className="flex flex-col min-h-[100vh] max-sm:max-h-[100vh] sm:flex-row text-gray-700 sm:bg-[var(--White)] sm:py-5 sm:px-8 sm:min-h-[80vh] sm:rounded-xl ">
       <Sidebar step={step} />
-      <main className="max-sm:px-4 rounded-2xl h-full max-sm:min-h-[75vh] sm:p-4 flex flex-col justify-between">
+      <main className="px-4 rounded-2xl h-full md:min-w-[540px] min-h-[75vh] sm:p-4 flex flex-col justify-between">
         {!confirmed && (
-          <div className=" max-sm:-mt-18 bg-white max-sm:p-4 rounded-xl flex justify-center py-4 w-full">
+          <div className=" -mt-18 sm:mt-0 bg-white rounded-xl px-7 py-4 w-full">
             {step === 1 && (
               <PersonalInfo
                 setUserInfo={setUserInfo}

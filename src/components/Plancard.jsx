@@ -16,9 +16,9 @@ const Plancard = ({ item, isMonthly, setPlan, plan }) => {
   return (
     <div
       id={item[0]}
-      className={`flex  sm:min-w-[100px] items-start cursor-pointer sm:flex-col sm:justify-between border rounded-lg sm:rounded-2xl ${
+      className={`flex col-span-1 sm:min-w-[100px] max-sm:mb-2 items-start hover:border-[var(--Blue-300)] cursor-pointer sm:flex-col sm:justify-between border rounded-lg sm:rounded-2xl ${
         plan.name === item[0]
-          ? "border-[var(--Purple-600)] border-2 bg-[]"
+          ? "border-[var(--Purple-600)] border-2 bg-amber-300"
           : "border-[var(--Blue-200)] border"
       })] sm:p-4 p-2.5`}
       onClick={(e) => setPlan({ name: item[0], amount })}

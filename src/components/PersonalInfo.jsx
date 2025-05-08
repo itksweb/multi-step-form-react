@@ -94,13 +94,13 @@ const PersonalInfo = ({
   };
 
   return (
-    <div className="">
+    <div className="max-w-[95%] sm:max-w-[85%]">
       <ContentHead
         title="Personal info"
         descr="Please provide your name, email address, and phone number."
       />
 
-      <div className="fields">
+      <div className="fields ">
         <TextInput
           type="text"
           id="name"

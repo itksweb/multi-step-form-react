@@ -18,12 +18,12 @@ const Plan = ({ isMonthly, setIsMonthly, plan, setPlan, err, errTxt, setInputErr
     }
   },[plan])
   return (
-    <div className=" ">
+    <div className="max-w-[95%] sm:max-w-[85%] ">
       <ContentHead
         title="Select your plan"
         descr="You have the option of monthly or yearly billing."
       />
-      <div className="plans grid gap-2.5 sm:grid-flow-col sm:grid-cols-3 sm:gap-5 w-full">
+      <div className="plans sm:grid sm:grid-flow-col sm:grid-cols-3 sm:gap-7 w-full">
         {plans.map((item) => (
           <Plancard
             key={item[0]}
@@ -58,7 +58,11 @@ const Plan = ({ isMonthly, setIsMonthly, plan, setPlan, err, errTxt, setInputErr
           Yearly
         </div>
       </div>
-      <p className={`${err ? "text-sm text-[var(--Red-500)] text-center " : "hidden"} `}>
+      <p
+        className={`${
+          err ? "text-sm text-[var(--Red-500)] text-center " : "hidden"
+        } `}
+      >
         {`${errTxt ? errTxt : "Please select a plan to proceed"}`}
       </p>
     </div>
