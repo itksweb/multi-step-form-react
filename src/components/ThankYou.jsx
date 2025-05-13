@@ -1,4 +1,4 @@
-import Try from "./Try";
+
 
 const ThankYou = () => {
   return (
@@ -15,7 +15,6 @@ const ThankYou = () => {
           our platform. If you ever need support, please feel free to email us
           at support@loremgaming.com.
         </p>
-        <Try />
       </div>
     </div>
   );
