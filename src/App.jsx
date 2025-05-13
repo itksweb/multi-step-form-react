@@ -114,7 +114,7 @@ const App = () => {
         {/* control buttons  */}
         {!confirmed && (
           <div
-            className={` p-4 max-sm:fixed max-sm:left-0 max-sm:right-0 max-sm:bottom-0 max-sm:bg-[var(--White)]  flex -mx-4 sm:-mx-0 sm:px-8 ${
+            className={` p-4 max-sm:fixed max-sm:left-0 max-sm:right-0 max-sm:bottom-0 max-sm:bg-[var(--White)]  flex sm:-mx-0 sm:px-8 ${
               step === 1 ? "justify-end" : "justify-between"
             }`}
           >
