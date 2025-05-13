@@ -114,7 +114,7 @@ const App = () => {
         {/* control buttons  */}
         {!confirmed && (
           <div
-            className={` p-4 max-sm:fixed max-sm:left-0 max-sm:right-0 max-sm:bottom-0 max-sm:bg-[var(--White)]  flex sm:-mx-0 sm:px-8 ${
+            className={` py-3 px-4 max-sm:fixed max-sm:left-0 max-sm:right-0 max-sm:bottom-0 max-sm:bg-[var(--White)]  flex sm:px-8 ${
               step === 1 ? "justify-end" : "justify-between"
             }`}
           >
@@ -130,7 +130,7 @@ const App = () => {
             <button
               className={`${
                 step === 4 ? "bg-[var(--Purple-600)]" : "bg-[var(--Blue-950)]"
-              } px-5 py-4 text-[var(--White)] cursor-pointer rounded-md sm:rounded-lg text-[0.8em] sm:text-[1em] `}
+              } px-5 py-4 text-[var(--White)] cursor-pointer rounded-[3px] sm:rounded-lg text-[0.8em] sm:text-[1em] `}
               onClick={nextStep}
               type="button"
             >
