@@ -12,6 +12,7 @@ start_files
 dist
 dist-ssr
 *.local
+design
 
 # Editor directories and files
 .vscode/*

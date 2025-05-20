@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ContentHead from "./ContentHead";
 import TextInput from "./TextInput";
+import StepContainer from "./StepContainer";
 
 const formin = [
   ["Name", "e.g. Stephen King", "text", "name"],
@@ -21,9 +22,6 @@ const PersonalInfo = ({
     email: false,
     phone: false,
   });
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
 
   useEffect(() => {
     if (touched.name) {
@@ -94,12 +92,10 @@ const PersonalInfo = ({
   };
 
   return (
-    <div className="max-w-[95%] sm:max-w-[85%]">
-      <ContentHead
-        title="Personal info"
-        descr="Please provide your name, email address, and phone number."
-      />
-
+    <StepContainer
+      title="Personal info"
+      descr="Please provide your name, email address, and phone number."
+    >
       <div className="fields ">
         <TextInput
           type="text"
@@ -130,7 +126,7 @@ const PersonalInfo = ({
           err={inputErr.phone}
         />
       </div>
-    </div>
+    </StepContainer>
   );
 };
 

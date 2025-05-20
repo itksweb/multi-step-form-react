@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ContentHead from "./ContentHead";
+import StepContainer from "./StepContainer";
 
 const Summary = ({ isMonthly, addons, plan, changePlan }) => {
   const [total, setTotal] = useState(0);
@@ -21,11 +22,14 @@ const Summary = ({ isMonthly, addons, plan, changePlan }) => {
   }, [addons, plan]);
 
   return (
-    <div className=" ">
-      <ContentHead
+    <StepContainer
+      title="Finishing up"
+      descr="Double-check everything looks OK before confirming."
+    >
+      {/* <ContentHead
         title="Finishing up"
         descr="Double-check everything looks OK before confirming."
-      />
+      /> */}
       <div className="p-4 bg-gray-100 rounded-lg ">
         <div className="plan flex items-center justify-between mb-2">
           <div className="plan-left">
@@ -78,7 +82,7 @@ const Summary = ({ isMonthly, addons, plan, changePlan }) => {
           +${total}/{term}
         </span>
       </div>
-    </div>
+    </StepContainer>
   );
 };
 

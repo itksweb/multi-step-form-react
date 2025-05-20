@@ -1,5 +1,6 @@
 import AddOnCard from "./AddOnCard";
 import ContentHead from "./ContentHead";
+import StepContainer from "./StepContainer";
 
 const addns = [
   ["Online service", 1, "Access to multiplayer games"],
@@ -9,11 +10,14 @@ const addns = [
 
 const AddOns = ({ setAddons, isMonthly, addons }) => {
   return (
-    <div className=" ">
-      <ContentHead
+    <StepContainer
+      title="Pick add-ons"
+      descr="Add-ons help enhance your gaming experience."
+    >
+      {/* <ContentHead
         title="Pick add-ons"
         descr="Add-ons help enhance your gaming experience."
-      />
+      /> */}
       <div className="plans w-full">
         {addns.map((item) => (
           <AddOnCard
@@ -25,7 +29,7 @@ const AddOns = ({ setAddons, isMonthly, addons }) => {
           />
         ))}
       </div>
-    </div>
+    </StepContainer>
   );
 };
 

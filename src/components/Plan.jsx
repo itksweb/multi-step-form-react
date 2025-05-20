@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import ContentHead from "./ContentHead";
 import Plancard from "./Plancard";
+import StepContainer from "./StepContainer";
 
 const plans = [
   ["Arcade", 9, "/assets/images/icon-arcade.svg"],
@@ -18,11 +19,14 @@ const Plan = ({ isMonthly, setIsMonthly, plan, setPlan, err, errTxt, setInputErr
     }
   },[plan])
   return (
-    <div className="max-w-[95%] sm:max-w-[85%] ">
-      <ContentHead
+    <StepContainer
+      title="Select your plan"
+      descr="You have the option of monthly or yearly billing."
+    >
+      {/* <ContentHead
         title="Select your plan"
         descr="You have the option of monthly or yearly billing."
-      />
+      /> */}
       <div className="plans sm:grid sm:grid-flow-col sm:grid-cols-3 sm:gap-7 w-full">
         {plans.map((item) => (
           <Plancard
@@ -65,7 +69,7 @@ const Plan = ({ isMonthly, setIsMonthly, plan, setPlan, err, errTxt, setInputErr
       >
         {`${errTxt ? errTxt : "Please select a plan to proceed"}`}
       </p>
-    </div>
+    </StepContainer>
   );
 };
 
