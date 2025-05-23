@@ -25,7 +25,7 @@ const Sidebar = ({ step }) => {
     <div
       className={` flex max-sm:justify-center sm:justify-items-start sm:items-start max-sm:min-h-[25vh] p-4 bg-[url(/assets/images/bg-sidebar-mobile.svg)] w-full  text-[var(--White)] bg-cover bg-no-repeat sm:min-h-full sm:w-1/3 sm:bg-[url(/assets/images/bg-sidebar-desktop.svg)] sm:py-12 pb-16 `}
     >
-      <div className=" my-auto max-sm:flex max-sm:justify-items-start py-3  sm:block">
+      <div className=" max-sm:my-auto max-sm:flex max-sm:justify-items-start py-3  sm:block">
         {sideData.map((item, i) => (
           <Step key={item} item={[item.toUpperCase(), i + 1]} step={step} />
         ))}
