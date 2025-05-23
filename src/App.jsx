@@ -74,11 +74,11 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col lg:w-[960px] md:w-[690px] sm:w-[580px] text-gray-700 sm:flex-row sm:bg-[var(--White)] sm:p-4 sm:min-h-[80vh] sm:rounded-xl sm:justify-between  ">
+    <div className="flex flex-col lg:w-[960px] md:w-[690px] sm:w-[580px] text-gray-700 sm:flex-row sm:bg-[var(--White)] sm:p-4 sm:h-[90vh] sm:rounded-xl sm:justify-between  ">
       <Sidebar step={step} />
-      <main className="flex flex-col justify-between max-sm:px-4 rounded-2xl h-full max-sm:min-h-[75vh] sm:p-4 sm:w-2/3 ">
+      <main className="relative px-4 rounded-2xl h-full sm:pt-4 sm:w-2/3 ">
         {!confirmed && (
-          <div className=" max-sm:-mt-18 bg-white max-sm:p-4 rounded-xl flex justify-center items-center py-4 w-full">
+          <div className="max-sm:-mt-18 bg-white max-sm:p-4 rounded-xl flex justify-center items-center py-4 w-full">
             {step === 1 && (
               <PersonalInfo
                 setUserInfo={setUserInfo}
@@ -117,29 +117,31 @@ const App = () => {
         )}
         {/* control buttons  */}
         {!confirmed && (
-          <div
-            className={` py-3 px-4 max-sm:fixed max-sm:left-0 max-sm:right-0 max-sm:bottom-0  max-sm:bg-[var(--White)]  flex sm:px-8 ${
-              step === 1 ? "justify-end" : "justify-between"
-            }`}
-          >
-            {step > 1 && (
+          <div className="sm:absolute sm:bottom-0 sm:left-0 sm:right-0  max-sm:fixed max-sm:left-0 max-sm:right-0 max-sm:bottom-0  max-sm:bg-[var(--White)] sm:mt-10">
+            <div
+              className={` py-3 px-4 flex w-[95%] sm:w-[85%] mx-auto sm:px-4 ${
+                step === 1 ? "justify-end" : "justify-between"
+              }`}
+            >
+              {step > 1 && (
+                <button
+                  className="btn text-[0.8em] hover:text-[var(--Blue-950)] focus:text-[var(--Blue-950)] cursor-pointer sm:text-[1em] text-[var(--Grey-500)]"
+                  onClick={prevStep}
+                  type="button"
+                >
+                  Go Back
+                </button>
+              )}
               <button
-                className="btn text-[0.8em] hover:text-[var(--Blue-950)] focus:text-[var(--Blue-950)] cursor-pointer sm:text-[1em] text-[var(--Grey-500)]"
-                onClick={prevStep}
+                className={`${
+                  step === 4 ? "bg-[var(--Purple-600)]" : "bg-[var(--Blue-950)]"
+                } px-5 py-2.5 text-[var(--White)] cursor-pointer rounded-[2px] sm:rounded-lg text-[0.8em] sm:text-[1em] `}
+                onClick={nextStep}
                 type="button"
               >
-                Go Back
+                {step === 4 ? "Confirm" : "Next Step"}
               </button>
-            )}
-            <button
-              className={`${
-                step === 4 ? "bg-[var(--Purple-600)]" : "bg-[var(--Blue-950)]"
-              } px-5 py-2.5 text-[var(--White)] cursor-pointer rounded-[2px] sm:rounded-lg text-[0.8em] sm:text-[1em] `}
-              onClick={nextStep}
-              type="button"
-            >
-              {step === 4 ? "Confirm" : "Next Step"}
-            </button>
+            </div>
           </div>
         )}
         {confirmed && <ThankYou />}
